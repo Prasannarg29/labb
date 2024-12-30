@@ -1,0 +1,85 @@
+Mystyle.css
+<style>
+p {
+/* Element Selector */
+color: blue;
+font-size: 16px;
+}
+/* Class Selector */
+.highlight {
+background-color: yellow;
+font-weight: bold;
+}
+/* ID Selector */
+#unique {
+color: red;
+font-size: 20px;
+}
+/* Descendant Selector */
+div p {
+color: green;
+}
+/* Child Selector */
+div > p {
+color: orange;
+font-style: italic;
+}
+/* Attribute Selector */
+a[target="_blank"] {
+color: purple;
+text-decoration: underline;
+}
+/* Pseudo-class Selector */
+p:hover {
+color: brown;
+}
+/* Pseudo-element Selector */
+p::first-line {
+font-weight: bold;
+}
+/* Grouping Selector */
+h1, h2, h3 {
+color: darkblue;
+}
+</style>
+Main.html
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSS Selectors Demonstration</title>
+<link rel="stylesheet"
+href="mystyle.css">
+<h1>CSS Selectors Demonstration</h1>
+<h2>Element Selector</h2>
+<p>This paragraph is selected by the element selector (all <code>&lt;p&gt;</code> elements).</p>
+<h2>Class Selector</h2>
+<p class="highlight">This paragraph is selected by the class selector.</p>
+<h2>ID Selector</h2>
+<p id="unique">This paragraph is selected by the ID selector.</p>
+<h2>Descendant Selector</h2>
+<div>
+selector.</p>
+</div>
+<p>This paragraph is inside a <code>&lt;div&gt;</code> and is selected by the descendant
+<p>This paragraph is outside the div and not affected by the descendant selector.</p>
+<h2>Child Selector</h2>
+<div>
+selector.</p>
+<div>
+selector.</p>
+<p>This paragraph is directly inside a <code>&lt;div&gt;</code> and is selected by the child
+<p>This paragraph is inside a nested <code>&lt;div&gt;</code> and is not affected by the child
+</div>
+</div>
+<h2>Attribute Selector</h2>
+<a href="https://example.com" target="_blank">This link is selected by the attribute selector.</a>
+<a href="https://example.com">This link is not selected by the attribute selector.</a>
+<h2>Pseudo-class Selector</h2>
+<p>Hover over this paragraph to see the pseudo-class selector in action.</p>
+<h2>Pseudo-element Selector</h2>
+<p>This paragraph demonstrates the pseudo-element selector by styling the first line.</p>
+<h2>Grouping Selector</h2>
+<h3>This heading is selected by the grouping selector (h1, h2, h3).</h3>
+</body>
+</html>

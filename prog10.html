@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>AJAX & JSON Example</title>
+ <style>
+
+ .container {
+ margin: 20px;
+ padding: 10px;
+ border: 1px solid #ddd;
+ }
+ </style>
+
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h2>AJAX and JSON Examples</h2>
+    <div class="container" id="without-jquery">
+    <h3>Load Content (without jQuery)</h3>
+    <button onclick="loadContentWithoutJQuery()">Load Content</button>
+    <div id="content-without-jquery"></div>
+    </div>
+    <div class="container" id="with-jquery">
+    <h3>Load Content (with jQuery)</h3>
+    <button onclick="loadContentWithJQuery()">Load Content</button>
+    <div id="content-with-jquery"></div>
+    </div>
+    <div class="container" id="getjson-example">
+    <h3>getJSON() Example</h3>
+    <button onclick="loadJSONWithJQuery()">Load JSON Data</button>
+    <div id="json-content"></div>
+    </div>
+    <div class="container" id="parsejson-example">
+    <h3>parseJSON() Example</h3>
+    <button onclick="parseJSONExample()">Parse JSON</button>
+    <div id="parsed-json-content"></div>
+    </div>
+    <script src="script.js"></script>
+   </body>
+   </html>
+
+
+
+   Script.js
+// Part a. Load content using vanilla JavaScript (without jQuery)
+function loadContentWithoutJQuery() {
+ const xhr = new XMLHttpRequest();
+ xhr.open('GET', 'content.txt', true);
+ xhr.onreadystatechange = function () {
+ if (xhr.readyState === 4 && xhr.status === 200) {
+ document.getElementById('content-without-jquery').textContent = xhr.responseText;
+ }
+ };
+ xhr.send();
+}
+// Part b. Load content using jQuery's ajax() method
+function loadContentWithJQuery() {
+ $.ajax({
+ url: 'content.txt',
+ method: 'GET',
+ success: function (data) {
+ $('#content-with-jquery').text(data);
+ },
+ error: function () {
+ $('#content-with-jquery').text('Failed to load content.');
+ }
+ });
+}
+// Part c. Load JSON data using jQuery's getJSON() method
+function loadJSONWithJQuery() {
+ $.getJSON('data.json', function (data) {
+ let content = '<ul>';
+ for (let key in data) {
+ content += `<li>${key}: ${data[key]}</li>`;
+ }
+ content += '</ul>';
+ $('#json-content').html(content);
+ });
+}
+// Part d. Parse JSON data using parseJSON() method
+function parseJSONExample() {
+ const jsonString = '{"name": "Alice", "age": 25, "city": "New York"}';
+ const jsonObj = $.parseJSON(jsonString);
+ let content = `<p>Name: ${jsonObj.name}</p>`;
+ content += `<p>Age: ${jsonObj.age}</p>`;
+ content += `<p>City: ${jsonObj.city}</p>`;
+ $('#parsed-json-content').html(content);
+}
